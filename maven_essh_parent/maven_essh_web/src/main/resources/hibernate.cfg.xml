@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- <property name="dialect"> org.hibernate.dialect.Oracle10gDialect </property> -->
+		<!-- 数据库的方言 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 可选配置 -->
+		<!-- 显示SQL语句，在控制台显示 -->
+		<property name="hibernate.show_sql">false</property>
+		<!-- 格式化SQL语句 -->
+		<property name="hibernate.format_sql">false</property>
+		<!-- 生成数据库的表结构 update:如果没有表结构，则创建表结构。如果存在，不会创建，添加数据 -->
+		<property name="hibernate.hbm2ddl.auto">none</property>
+		<!-- 设置数据库的隔离级别，就使用默认值就OK <property name="hibernate.connection.isolation">4</property> -->
+		<!-- 开启绑定本地的session 由于我们这里已经交给了spring管理。所以不配置了 -->
+		<!-- <property name="hibernate.current_session_context_class">thread</property> -->
+		<!-- 懒加载，配合web.xml中配置的 openSessionInViewFilter -->
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<!--校验模式 JPA java persistent api -->
+		<property name="javax.persistence.validation.mode">none</property>
+
+		<!-- 加载映射文件 -->
+		<mapping resource="com/david/mavenessh/domain/Dept.hbm.xml"></mapping>
+		<mapping resource="com/david/mavenessh/domain/User.hbm.xml"></mapping>
+		<mapping resource="com/david/mavenessh/domain/UserInfo.hbm.xml"></mapping>
+		<mapping resource="com/david/mavenessh/domain/Role.hbm.xml"></mapping>
+		<mapping resource="com/david/mavenessh/domain/Module.hbm.xml"></mapping>
+	</session-factory>
+</hibernate-configuration>

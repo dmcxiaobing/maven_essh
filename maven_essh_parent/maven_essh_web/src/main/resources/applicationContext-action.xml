@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans.xsd    
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop.xsd    
+	http://www.springframework.org/schema/tx    
+	http://www.springframework.org/schema/tx/spring-tx.xsd    
+	http://www.springframework.org/schema/context    
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="loginAction" class="com.david.mavenessh.web.action.LoginAction"
+		scope="prototype"></bean>
+	<bean id="homeAction" class="com.david.mavenessh.web.action.common.HomeAction"
+		scope="prototype"></bean>
+
+	<!-- 部门的Action -->
+	<bean id="deptAction" class="com.david.mavenessh.web.action.sysadmin.DeptAction"
+		scope="prototype">
+		<property name="deptService" ref="deptService"></property>
+	</bean>
+
+	<!-- 用户的Action -->
+	<bean id="userAction" class="com.david.mavenessh.web.action.sysadmin.UserAction"
+		scope="prototype">
+		<property name="userService" ref="userService"></property>
+		<property name="deptService" ref="deptService"></property>
+		<property name="roleService" ref="roleService"></property>
+	</bean>
+
+	<!-- 角色 -->
+	<bean id="roleAction" class="com.david.mavenessh.web.action.sysadmin.RoleAction"
+		scope="prototype">
+		<property name="roleService" ref="roleService"></property>
+	</bean>
+
+	<!-- 模块 -->
+	<bean id="moduleAction" class="com.david.mavenessh.web.action.sysadmin.ModuleAction"
+		scope="prototype">
+		<property name="moduleService" ref="moduleService"></property>
+		<property name="deptService" ref="deptService"></property>
+		<property name="userService" ref="userService"></property>
+	</bean>
+
+</beans>
