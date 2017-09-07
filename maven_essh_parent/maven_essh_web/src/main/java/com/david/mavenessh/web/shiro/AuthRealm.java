@@ -51,6 +51,8 @@ public class AuthRealm extends AuthorizingRealm {
 		List<User> users = userService.find(hql, User.class, new String[] { upToken.getUsername() });
 		if (users != null && users.size() > 0) {
 			User dbUser = users.get(0);
+//			System.err.println("username"+dbUser.getUserName());
+//			System.err.println("Password"+dbUser.getPassword());
 			AuthenticationInfo info = new SimpleAuthenticationInfo(dbUser, dbUser.getPassword(), this.getName());
 			return info;// 此处如果返回，则就会立即进入到密码比较器
 		}

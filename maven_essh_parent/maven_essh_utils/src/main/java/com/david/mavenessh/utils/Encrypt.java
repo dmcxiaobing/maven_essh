@@ -21,7 +21,9 @@ public class Encrypt {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(new Md5Hash("123456","zhangsan"+"cgx",5).toString());
+//		System.out.println(new Md5Hash("123456","zhangsan"+"cgx",5).toString());
+		System.out.println(md5("123456", "cgx"));
+		System.out.println(Encrypt.md5("123456", "aa"));
 	}
 	
 	

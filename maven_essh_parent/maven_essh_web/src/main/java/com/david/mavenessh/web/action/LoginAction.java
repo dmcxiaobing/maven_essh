@@ -53,6 +53,7 @@ public class LoginAction extends BaseAction {
 			Subject subject = SecurityUtils.getSubject();
 			// 调用登陆的方法
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+			System.out.println(username+password);
 			subject.login(token);// 当这一行代码执行时，就会自动跳入到AuthRealm中的认证方法
 			// 登陆成功时，就从Shiro中取出用户的登录信息
 			User user = (User) subject.getPrincipal();

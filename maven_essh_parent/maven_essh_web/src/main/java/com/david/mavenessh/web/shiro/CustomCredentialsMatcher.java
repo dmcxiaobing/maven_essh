@@ -26,7 +26,9 @@ public class CustomCredentialsMatcher extends SimpleCredentialsMatcher {
 		// 根据用户名做盐进行加密
 		Object EncryptFormPassword = Encrypt.md5(new String(upToken.getPassword()), upToken.getUsername());
 		// 取出数据库中加密的密码
-		Object dbPassword = info.getPrincipals();
+		Object dbPassword = info.getCredentials();
+		System.out.println("EncryptFormPassword"+EncryptFormPassword);
+		System.out.println("dbPassword"+dbPassword);
 		// 用户输入的密码和数据库中的进行对比
 		return this.equals(EncryptFormPassword, dbPassword);
 	}
