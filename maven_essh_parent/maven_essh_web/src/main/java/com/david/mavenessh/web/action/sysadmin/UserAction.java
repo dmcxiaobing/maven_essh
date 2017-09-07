@@ -12,10 +12,12 @@ import com.david.mavenessh.utils.Page;
 import com.david.mavenessh.web.action.base.BaseAction;
 import com.opensymphony.xwork2.ModelDriven;
 /**
- * 用户的action
+ * 用户的action 
  * @Author ：程序员小冰
  * @新浪微博 ：http://weibo.com/mcxiaobing
  * @GitHub: https://github.com/QQ986945193
+ * 
+ * clean tomcat7:run
  */
 public class UserAction extends BaseAction implements ModelDriven<User>{
 	private User model = new User();
