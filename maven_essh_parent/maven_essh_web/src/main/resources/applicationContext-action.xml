@@ -35,6 +35,7 @@
 	<bean id="roleAction" class="com.david.mavenessh.web.action.sysadmin.RoleAction"
 		scope="prototype">
 		<property name="roleService" ref="roleService"></property>
+		<property name="moduleService" ref="moduleService"></property>
 	</bean>
 
 	<!-- 模块 -->

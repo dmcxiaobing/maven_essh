@@ -82,7 +82,7 @@
   </div>
   
 <%-- <div>
-
+这个使用的CheckBox实现的。
 
 <div style="text-align:left">
 	<c:forEach items="${moduleList}" var="o">

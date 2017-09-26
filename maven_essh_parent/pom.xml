@@ -274,7 +274,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>maven_essh_parent</finalName>
+		<finalName>maven_essh_web</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>

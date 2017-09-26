@@ -24,7 +24,7 @@ public class LoginAction extends BaseAction {
 	private String username;
 	private String password;
 
-	// SSH传统登录方式
+	// SSH传统登录方式  cgx 123456
 	public String login() throws Exception {
 
 		// if(true){

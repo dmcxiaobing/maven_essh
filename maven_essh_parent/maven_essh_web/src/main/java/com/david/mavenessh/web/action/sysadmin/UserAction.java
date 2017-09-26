@@ -1,6 +1,8 @@
 package com.david.mavenessh.web.action.sysadmin;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.david.mavenessh.domain.Dept;
 import com.david.mavenessh.domain.Role;
@@ -88,15 +90,52 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 	 * 进入角色的页面
 	 */
 	public String torole(){
-		//调用业务方法
+		//调用业务方法 根据ID得到用户信息
 		User user = userService.get(User.class,model.getId());
 		super.push(user);
-		
+		//查询出所有的角色
 		List<Role> roleList = roleService.find("from Role", Role.class, null);
 		super.put("roleList", roleList);
-		
+		//得到当前用户属于的角色
+		Set<Role> roleSet = user.getRoles();
+		System.err.println(roleSet.size());
+		StringBuilder sb = new StringBuilder();
+		for (Role role : roleSet) {
+			sb.append(role.getName()).append(",");
+		}
+		super.put("roleStr", sb.toString());
 		return "torole";
 	}
+	
+	
+	private String[] roleIds;//保存角色的列表
+	public void setRoleIds(String[] roleIds) {
+		this.roleIds = roleIds;
+	}
+
+	/**
+	 * 实现角色的更改
+	 */
+	public String role(){
+		//根据用户的id得到对象
+		User user = userService.get(User.class,model.getId());
+		//得到当前选中的角色列表
+		Set<Role> roles = new HashSet<Role>();
+		for (String id : roleIds) {
+			Role role = roleService.get(Role.class, id);
+			roles.add(role);//向角色列表中添加一个新的角色
+		}
+		
+		//设置用户与角色列表之间的关系
+		user.setRoles(roles);
+		//保存到数据库中
+		userService.saveOrUpdate(user);//影响的是用户角色的中间表
+		return "alist";
+		
+	}
+	
+	
+	
 	/**
 	 * 保存
 	 */
